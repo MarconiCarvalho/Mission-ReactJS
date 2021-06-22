@@ -1,15 +1,7 @@
-import {Button} from './components/Button'
-
+import { NewRoom } from "./pages/NewRoom";
 function App(){
     return(
-        <div>
-            <Button/>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-        </div>
-
-    )
+     <NewRoom/>
+    );
 }
 export default App;
