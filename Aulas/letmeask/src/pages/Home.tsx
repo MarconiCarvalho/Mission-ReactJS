@@ -9,8 +9,6 @@ import googleIconImg from '../assets/images/google-icon.svg';
 import { Button } from '../components/Button';
 
 import '../styles/auth.scss';
-import { resourceLimits } from 'worker_threads';
-
 
 export function Home(){   
     const history = useHistory();
@@ -29,6 +27,7 @@ export function Home(){
                 <p>Tire as dúvidas de sua audiência em tempo-real</p>
             </aside>
             <main>
+                
                 <div className="main-content">
                     <img src= {logoImg} alt="Letmeask" />
                     <button onClick={handleCreateRoom} className="create-room">
