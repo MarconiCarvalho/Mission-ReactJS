@@ -1,29 +1,35 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom'
 
-import { auth, firebase } from '../services/firebase'
+import { AuthContext } from '../contexts/AuthContext';
 
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 
 import { Button } from '../components/Button';
+import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
 
 export function Home(){   
     const history = useHistory();
+    const{user, signInWithGoogle} = useAuth() 
 
-    function handleCreateRoom(){
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider).then(result =>{console.log(result);
+
+    async function handleCreateRoom(){
+        if(!user){
+           await signInWithGoogle()
+        }
+
         history.push('/rooms/new');
-    })
    }
+
     return(
         <div id ="page-auth">
             <aside>
                 <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas"/>
-                <strong>Crie Salas de Q&amp; A ao-vivo</strong>
+                <strong>Crie Salas de Q&amp;A ao-vivo</strong>
                 <p>Tire as dúvidas de sua audiência em tempo-real</p>
             </aside>
             <main>
